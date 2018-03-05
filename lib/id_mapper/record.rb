@@ -15,6 +15,15 @@ module IDMapper
       identifier.to_s if identifier
     end
 
+    def set(record, options = {})
+      params = options.merge(
+        identifier_a: { scheme_id: scheme.id, value: id },
+        identifier_b: { scheme_id: record.scheme.id, value: record.id }
+      )
+      response = Request.post('equivalence-claim', params)
+      response.code == 201
+    end
+
     private
 
     def identifiers
