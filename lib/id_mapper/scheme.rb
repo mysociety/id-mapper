@@ -8,5 +8,9 @@ module IDMapper
       @id = id
       @name = name
     end
+
+    def [](id)
+      Record.new(id: id, scheme: self)
+    end
   end
 end

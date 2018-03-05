@@ -14,4 +14,18 @@ describe IDMapper::Scheme do
       assert_equal 'wikidata-persons', scheme.name
     end
   end
+
+  describe '#[]' do
+    it 'returns Record object' do
+      assert_instance_of IDMapper::Record, scheme['Q1']
+    end
+
+    it 'sets Record ID attribute' do
+      assert_equal 'Q1', scheme['Q1'].id
+    end
+
+    it 'sets Record scheme attribute' do
+      assert_equal scheme, scheme['Q1'].scheme
+    end
+  end
 end
