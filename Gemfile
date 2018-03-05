@@ -9,6 +9,9 @@ group :development do
   gem 'rubocop', '0.52.1'
 
   gem 'minitest'
+  gem 'mocha', require: false
+  gem 'vcr'
+  gem 'webmock'
 
   platforms :mri do
     gem 'pry'

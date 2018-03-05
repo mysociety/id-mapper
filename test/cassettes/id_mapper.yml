@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://127.0.0.1:8000/scheme
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.5.0p0
+      Content-Type:
+      - application/json
+      Host:
+      - 127.0.0.1:8000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 05 Mar 2018 12:21:06 GMT
+      Server:
+      - WSGIServer/0.1 Python/2.7.13
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '190'
+    body:
+      encoding: UTF-8
+      string: "{\n    \"results\": [\n        {\n            \"id\": 1, \n            \"name\":
+        \"uk-area_id\"\n        }, \n        {\n            \"id\": 2, \n            \"name\":
+        \"wikidata-district-item\"\n        }\n    ]\n}"
+    http_version: 
+  recorded_at: Mon, 05 Mar 2018 12:21:06 GMT
+recorded_with: VCR 4.0.0

@@ -3,4 +3,19 @@
 require_relative './test_helper'
 
 describe IDMapper do
+  before { VCR.insert_cassette('id_mapper') }
+  after { VCR.eject_cassette }
+
+  describe '.schemes' do
+    it 'returns and array' do
+      assert_instance_of Array, IDMapper.schemes
+    end
+
+    it 'maps scheme data correctly' do
+      schemes = IDMapper.schemes
+      assert_instance_of IDMapper::Scheme, schemes.first
+      assert_equal 1, schemes.first.id
+      assert_equal 'uk-area_id', schemes.first.name
+    end
+  end
 end
