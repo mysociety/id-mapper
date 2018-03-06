@@ -14,3 +14,6 @@ ENV['ID_MAPPING_STORE_BASE_URL'] = 'http://127.0.0.1:8000'
 ENV['ID_MAPPING_STORE_API_KEY'] = 'abcdefgh'
 
 require_relative '../lib/id_mapper'
+
+require 'logger'
+IDMapper.logger = Logger.new('test.log')

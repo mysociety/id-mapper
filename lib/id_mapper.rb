@@ -8,6 +8,8 @@ module IDMapper
   InvalidScheme = Class.new(ArgumentError)
 
   class << self
+    attr_accessor :logger
+
     def schemes
       Request.get('scheme')[:results].map { |r| Scheme.new(r) }
     end
@@ -16,6 +18,10 @@ module IDMapper
       scheme = schemes.find { |s| s.name == scheme_name }
       raise InvalidScheme, 'scheme no present' unless scheme
       scheme
+    end
+
+    def log(level, message)
+      logger.send(level, name) { message } if logger
     end
   end
 end

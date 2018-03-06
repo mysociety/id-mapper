@@ -11,6 +11,7 @@ module IDMapper
     ID_MAPPING_STORE_API_KEY = ENV.fetch('ID_MAPPING_STORE_API_KEY')
 
     def self.get(path)
+      IDMapper.log 'debug', "Request (GET) /#{path}"
       url = "#{ID_MAPPING_STORE_BASE_URL}/#{path}"
       parse(RestClient.get(url, headers))
     rescue RestClient::NotFound
@@ -18,6 +19,7 @@ module IDMapper
     end
 
     def self.post(path, params)
+      IDMapper.log 'debug', "Request (POST) /#{path}, params=#{params.inspect}"
       url = "#{ID_MAPPING_STORE_BASE_URL}/#{path}"
       RestClient.post(url, params.to_json, headers_with_api_key)
     end
