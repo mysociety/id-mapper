@@ -59,6 +59,64 @@ http_interactions:
     http_version:
   recorded_at: Tue, 06 Mar 2018 16:22:01 GMT
 - request:
+    method: get
+    uri: http://127.0.0.1:8000/identifier/1/gss:S14000003
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.5.0p0
+      Content-Type:
+      - application/json
+      Host:
+      - 127.0.0.1:8000
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 06 Mar 2018 16:22:01 GMT
+      Server:
+      - WSGIServer/0.1 Python/2.7.13
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '1774'
+    body:
+      encoding: UTF-8
+      string: "\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\">\n  <title>Page not found at /identifier/1/gss:S14000003</title>\n
+        \ <meta name=\"robots\" content=\"NONE,NOARCHIVE\">\n  <style type=\"text/css\">\n
+        \   html * { padding:0; margin:0; }\n    body * { padding:10px 20px; }\n    body
+        * * { padding:0; }\n    body { font:small sans-serif; background:#eee; }\n
+        \   body>div { border-bottom:1px solid #ddd; }\n    h1 { font-weight:normal;
+        margin-bottom:.4em; }\n    h1 span { font-size:60%; color:#666; font-weight:normal;
+        }\n    table { border:none; border-collapse: collapse; width:100%; }\n    td,
+        th { vertical-align:top; padding:2px 3px; }\n    th { width:12em; text-align:right;
+        color:#666; padding-right:.5em; }\n    #info { background:#f6f6f6; }\n    #info
+        ol { margin: 0.5em 4em; }\n    #info ol li { font-family: monospace; }\n    #summary
+        { background: #ffc; }\n    #explanation { background:#eee; border-bottom:
+        0px none; }\n  </style>\n</head>\n<body>\n  <div id=\"summary\">\n    <h1>Page
+        not found <span>(404)</span></h1>\n    <table class=\"meta\">\n      <tr>\n
+        \       <th>Request Method:</th>\n        <td>GET</td>\n      </tr>\n      <tr>\n
+        \       <th>Request URL:</th>\n        <td>http://127.0.0.1:8000/identifier/1/gss:S14000003</td>\n
+        \     </tr>\n      \n      <tr>\n        <th>Raised by:</th>\n        <td>id_mappings.views.IdentifierLookupView</td>\n
+        \     </tr>\n      \n    </table>\n  </div>\n  <div id=\"info\">\n    \n      <p>No
+        Identifier matches the given query.</p>\n    \n  </div>\n\n  <div id=\"explanation\">\n
+        \   <p>\n      You're seeing this error because you have <code>DEBUG = True</code>
+        in\n      your Django settings file. Change that to <code>False</code>, and
+        Django\n      will display a standard 404 page.\n    </p>\n  </div>\n</body>\n</html>\n"
+    http_version:
+  recorded_at: Tue, 06 Mar 2018 16:22:01 GMT
+- request:
     method: post
     uri: http://127.0.0.1:8000/equivalence-claim
     body:

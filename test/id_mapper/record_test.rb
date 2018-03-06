@@ -75,5 +75,35 @@ describe IDMapper::Record do
         assert_equal true, record.set(other_record, comment: 'Some comment')
       end
     end
+
+    it 'deprecate existing equivalence claims' do
+      VCR.use_cassette('id_mapper_record_set_deprecate') do
+        old_record = IDMapper::Record.new(id: 'Q1', scheme: other_scheme)
+        record.set(old_record)
+        assert_includes record.all(other_scheme), 'Q1'
+        assert_equal true, record.set(other_record)
+        refute_includes record.all(other_scheme), 'Q1'
+      end
+    end
+  end
+
+  describe '#del' do
+    it 'accepts a scheme and depricates each record' do
+      VCR.use_cassette('id_mapper_record_set_del_scheme') do
+        assert_equal true, record.set(other_record)
+        assert_equal 'Q1529479', record.get(other_scheme)
+        assert_equal true, record.del(other_scheme)
+        assert_nil record.get(other_scheme)
+      end
+    end
+
+    it 'can deprecate a single record' do
+      VCR.use_cassette('id_mapper_record_set_del_record') do
+        assert_equal true, record.set(other_record)
+        assert_equal 'Q1529479', record.get(other_scheme)
+        assert_equal true, record.del(other_record)
+        assert_nil record.get(other_scheme)
+      end
+    end
   end
 end

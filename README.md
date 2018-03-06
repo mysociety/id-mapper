@@ -64,3 +64,18 @@ optional comment:
 ```ruby
 uk['gss:S14000003'].set(wd['Q408547'], comment: 'Foo')
 ```
+
+While creating an equivalence claim between `gss:S17000017` and `Q408547`, all
+existing claims for the same scheme will be deprecated:
+
+```ruby
+uk['gss:S14000003'].set(wd['Q1'])
+uk['gss:S14000003'].set(wd['Q408547'])
+uk['gss:S14000003'].all(wd) => ['Q408547']
+```
+
+Equivalence claims can manually be deprecated by:
+
+```ruby
+uk['gss:S14000003'].del(wd['Q1']) => true
+```

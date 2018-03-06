@@ -23,7 +23,17 @@ module IDMapper
     end
 
     def set(record, comment: nil)
+      del(record.scheme)
       equivalence_claim(record, comment: comment)
+    end
+
+    def del(record_or_scheme)
+      case record_or_scheme
+      when Record
+        equivalence_claim(record_or_scheme, deprecated: true)
+      when Scheme
+        identifiers_for_scheme(record_or_scheme).all? { |record| del(record) }
+      end
     end
 
     private
