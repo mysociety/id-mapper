@@ -19,30 +19,51 @@ http_interactions:
       - 127.0.0.1:8000
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       Date:
-      - Mon, 05 Mar 2018 12:48:27 GMT
+      - Tue, 06 Mar 2018 16:22:01 GMT
       Server:
       - WSGIServer/0.1 Python/2.7.13
       X-Frame-Options:
       - SAMEORIGIN
       Content-Type:
-      - application/json
+      - text/html
       Content-Length:
-      - '41'
+      - '1774'
     body:
       encoding: UTF-8
-      string: "{\n    \"results\": [], \n    \"history\": []\n}"
-    http_version: 
-  recorded_at: Mon, 05 Mar 2018 12:48:27 GMT
+      string: "\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\">\n  <title>Page not found at /identifier/1/gss:S14000003</title>\n
+        \ <meta name=\"robots\" content=\"NONE,NOARCHIVE\">\n  <style type=\"text/css\">\n
+        \   html * { padding:0; margin:0; }\n    body * { padding:10px 20px; }\n    body
+        * * { padding:0; }\n    body { font:small sans-serif; background:#eee; }\n
+        \   body>div { border-bottom:1px solid #ddd; }\n    h1 { font-weight:normal;
+        margin-bottom:.4em; }\n    h1 span { font-size:60%; color:#666; font-weight:normal;
+        }\n    table { border:none; border-collapse: collapse; width:100%; }\n    td,
+        th { vertical-align:top; padding:2px 3px; }\n    th { width:12em; text-align:right;
+        color:#666; padding-right:.5em; }\n    #info { background:#f6f6f6; }\n    #info
+        ol { margin: 0.5em 4em; }\n    #info ol li { font-family: monospace; }\n    #summary
+        { background: #ffc; }\n    #explanation { background:#eee; border-bottom:
+        0px none; }\n  </style>\n</head>\n<body>\n  <div id=\"summary\">\n    <h1>Page
+        not found <span>(404)</span></h1>\n    <table class=\"meta\">\n      <tr>\n
+        \       <th>Request Method:</th>\n        <td>GET</td>\n      </tr>\n      <tr>\n
+        \       <th>Request URL:</th>\n        <td>http://127.0.0.1:8000/identifier/1/gss:S14000003</td>\n
+        \     </tr>\n      \n      <tr>\n        <th>Raised by:</th>\n        <td>id_mappings.views.IdentifierLookupView</td>\n
+        \     </tr>\n      \n    </table>\n  </div>\n  <div id=\"info\">\n    \n      <p>No
+        Identifier matches the given query.</p>\n    \n  </div>\n\n  <div id=\"explanation\">\n
+        \   <p>\n      You're seeing this error because you have <code>DEBUG = True</code>
+        in\n      your Django settings file. Change that to <code>False</code>, and
+        Django\n      will display a standard 404 page.\n    </p>\n  </div>\n</body>\n</html>\n"
+    http_version:
+  recorded_at: Tue, 06 Mar 2018 16:22:01 GMT
 - request:
     method: post
     uri: http://127.0.0.1:8000/equivalence-claim
     body:
       encoding: UTF-8
-      string: '{"comment":"New identifier","identifier_a":{"scheme_id":1,"value":"gss:S14000003"},"identifier_b":{"scheme_id":2,"value":"Q408547"}}'
+      string: '{"identifier_a":{"scheme_id":1,"value":"gss:S14000003"},"identifier_b":{"scheme_id":2,"value":"Q408547"}}'
     headers:
       Accept:
       - application/json
@@ -55,7 +76,7 @@ http_interactions:
       X-Api-Key:
       - abcdefgh
       Content-Length:
-      - '132'
+      - '105'
       Host:
       - 127.0.0.1:8000
   response:
@@ -64,7 +85,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 05 Mar 2018 12:48:27 GMT
+      - Tue, 06 Mar 2018 16:22:01 GMT
       Server:
       - WSGIServer/0.1 Python/2.7.13
       X-Frame-Options:
@@ -72,13 +93,13 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '111'
+      - '109'
     body:
       encoding: UTF-8
-      string: "{\n    \"identifier_a\": {\n        \"created\": false\n    }, \n    \"identifier_b\":
-        {\n        \"created\": false\n    }\n}"
-    http_version: 
-  recorded_at: Mon, 05 Mar 2018 12:48:27 GMT
+      string: "{\n    \"identifier_a\": {\n        \"created\": true\n    }, \n    \"identifier_b\":
+        {\n        \"created\": true\n    }\n}"
+    http_version:
+  recorded_at: Tue, 06 Mar 2018 16:22:01 GMT
 - request:
     method: get
     uri: http://127.0.0.1:8000/identifier/1/gss:S14000003
@@ -102,7 +123,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 05 Mar 2018 12:48:27 GMT
+      - Tue, 06 Mar 2018 16:22:01 GMT
       Server:
       - WSGIServer/0.1 Python/2.7.13
       X-Frame-Options:
@@ -110,16 +131,16 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '509'
+      - '495'
     body:
       encoding: UTF-8
       string: "{\n    \"results\": [\n        {\n            \"scheme_name\": \"wikidata-district-item\",
         \n            \"scheme_id\": 2, \n            \"value\": \"Q408547\"\n        }\n
-        \   ], \n    \"history\": [\n        {\n            \"comment\": \"New identifier\",
-        \n            \"deprecated\": false, \n            \"identifier\": {\n                \"scheme_name\":
+        \   ], \n    \"history\": [\n        {\n            \"comment\": \"\", \n
+        \           \"deprecated\": false, \n            \"identifier\": {\n                \"scheme_name\":
         \"wikidata-district-item\", \n                \"scheme_id\": 2, \n                \"value\":
-        \"Q408547\"\n            }, \n            \"created\": \"2018-03-05T12:48:27.446314+00:00\"\n
+        \"Q408547\"\n            }, \n            \"created\": \"2018-03-06T16:22:01.476734+00:00\"\n
         \       }\n    ]\n}"
-    http_version: 
-  recorded_at: Mon, 05 Mar 2018 12:48:27 GMT
+    http_version:
+  recorded_at: Tue, 06 Mar 2018 16:22:01 GMT
 recorded_with: VCR 4.0.0

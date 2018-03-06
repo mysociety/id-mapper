@@ -6,6 +6,7 @@ describe IDMapper::Record do
   let(:scheme) { IDMapper::Scheme.new(id: 1, name: 'uk-area-id') }
   let(:record) { IDMapper::Record.new(id: 'gss:S17000017', scheme: scheme) }
   let(:other_scheme) { IDMapper::Scheme.new(id: 2, name: 'wikidata-district-item') }
+  let(:other_record) { IDMapper::Record.new(id: 'Q1529479', scheme: other_scheme) }
 
   describe 'initialisation' do
     it 'sets ID attibutes' do
@@ -58,16 +59,21 @@ describe IDMapper::Record do
   end
 
   describe '#set' do
-    before { VCR.insert_cassette('id_mapper_record_set') }
-    after { VCR.eject_cassette }
-
     let(:record) { IDMapper::Record.new(id: 'gss:S14000003', scheme: scheme) }
     let(:other_record) { IDMapper::Record.new(id: 'Q408547', scheme: other_scheme) }
 
     it 'returns true when equivalence claim is created' do
-      assert_nil record.get(other_scheme)
-      assert_equal true, record.set(other_record, comment: 'New identifier')
-      assert_equal 'Q408547', record.get(other_scheme)
+      VCR.use_cassette('id_mapper_record_set') do
+        assert_nil record.get(other_scheme)
+        assert_equal true, record.set(other_record)
+        assert_equal 'Q408547', record.get(other_scheme)
+      end
+    end
+
+    it 'accpets optional comment' do
+      VCR.use_cassette('id_mapper_record_set_comment') do
+        assert_equal true, record.set(other_record, comment: 'Some comment')
+      end
     end
   end
 end

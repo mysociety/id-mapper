@@ -22,16 +22,19 @@ module IDMapper
       identifiers_for_scheme(other_scheme).map(&:to_s)
     end
 
-    def set(record, options = {})
-      params = options.merge(
-        identifier_a: { scheme_id: scheme.id, value: id },
-        identifier_b: { scheme_id: record.scheme.id, value: record.id }
-      )
-      response = Request.post('equivalence-claim', params)
-      response.code == 201
+    def set(record, comment: nil)
+      equivalence_claim(record, comment: comment)
     end
 
     private
+
+    def equivalence_claim(record, options)
+      response = Request.post(
+        'equivalence-claim',
+        options.merge(identifier_a: to_h, identifier_b: record.to_h).compact
+      )
+      response.code == 201
+    end
 
     def identifiers_for_scheme(other_scheme)
       raise InvalidScheme, 'scheme must differ' if scheme == other_scheme

@@ -1,0 +1,146 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://127.0.0.1:8000/identifier/1/gss:S14000003
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.5.0p0
+      Content-Type:
+      - application/json
+      Host:
+      - 127.0.0.1:8000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Mar 2018 16:22:01 GMT
+      Server:
+      - WSGIServer/0.1 Python/2.7.13
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1731'
+    body:
+      encoding: UTF-8
+      string: "{\n    \"results\": [\n        {\n            \"scheme_name\": \"wikidata-district-item\",
+        \n            \"scheme_id\": 2, \n            \"value\": \"Q408547\"\n        }\n
+        \   ], \n    \"history\": [\n        {\n            \"comment\": \"\", \n
+        \           \"deprecated\": false, \n            \"identifier\": {\n                \"scheme_name\":
+        \"wikidata-district-item\", \n                \"scheme_id\": 2, \n                \"value\":
+        \"Q408547\"\n            }, \n            \"created\": \"2018-03-06T16:22:01.476734+00:00\"\n
+        \       }, \n        {\n            \"comment\": \"\", \n            \"deprecated\":
+        true, \n            \"identifier\": {\n                \"scheme_name\": \"wikidata-district-item\",
+        \n                \"scheme_id\": 2, \n                \"value\": \"Q408547\"\n
+        \           }, \n            \"created\": \"2018-03-06T16:22:01.556349+00:00\"\n
+        \       }, \n        {\n            \"comment\": \"\", \n            \"deprecated\":
+        false, \n            \"identifier\": {\n                \"scheme_name\": \"wikidata-district-item\",
+        \n                \"scheme_id\": 2, \n                \"value\": \"Q1\"\n
+        \           }, \n            \"created\": \"2018-03-06T16:22:01.587156+00:00\"\n
+        \       }, \n        {\n            \"comment\": \"\", \n            \"deprecated\":
+        true, \n            \"identifier\": {\n                \"scheme_name\": \"wikidata-district-item\",
+        \n                \"scheme_id\": 2, \n                \"value\": \"Q1\"\n
+        \           }, \n            \"created\": \"2018-03-06T16:22:01.680405+00:00\"\n
+        \       }, \n        {\n            \"comment\": \"\", \n            \"deprecated\":
+        false, \n            \"identifier\": {\n                \"scheme_name\": \"wikidata-district-item\",
+        \n                \"scheme_id\": 2, \n                \"value\": \"Q408547\"\n
+        \           }, \n            \"created\": \"2018-03-06T16:22:01.705326+00:00\"\n
+        \       }\n    ]\n}"
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 16:22:01 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:8000/equivalence-claim
+    body:
+      encoding: UTF-8
+      string: '{"deprecated":true,"identifier_a":{"scheme_id":1,"value":"gss:S14000003"},"identifier_b":{"scheme_id":2,"value":"Q408547"}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.5.0p0
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - abcdefgh
+      Content-Length:
+      - '123'
+      Host:
+      - 127.0.0.1:8000
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 06 Mar 2018 16:22:01 GMT
+      Server:
+      - WSGIServer/0.1 Python/2.7.13
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '111'
+    body:
+      encoding: UTF-8
+      string: "{\n    \"identifier_a\": {\n        \"created\": false\n    }, \n    \"identifier_b\":
+        {\n        \"created\": false\n    }\n}"
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 16:22:01 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:8000/equivalence-claim
+    body:
+      encoding: UTF-8
+      string: '{"comment":"Some comment","identifier_a":{"scheme_id":1,"value":"gss:S14000003"},"identifier_b":{"scheme_id":2,"value":"Q408547"}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.5.0p0
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - abcdefgh
+      Content-Length:
+      - '130'
+      Host:
+      - 127.0.0.1:8000
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 06 Mar 2018 16:22:01 GMT
+      Server:
+      - WSGIServer/0.1 Python/2.7.13
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '111'
+    body:
+      encoding: UTF-8
+      string: "{\n    \"identifier_a\": {\n        \"created\": false\n    }, \n    \"identifier_b\":
+        {\n        \"created\": false\n    }\n}"
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 16:22:01 GMT
+recorded_with: VCR 4.0.0

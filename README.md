@@ -59,7 +59,7 @@ uk['gss:S14000003'].set(wd['Q408547'])
 ```
 
 Create an equivalence claim between `gss:S17000017` and `Q408547`, with a
-comment:
+optional comment:
 
 ```ruby
 uk['gss:S14000003'].set(wd['Q408547'], comment: 'Foo')
