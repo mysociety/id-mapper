@@ -3,9 +3,9 @@
 require_relative '../test_helper'
 
 describe IDMapper::Record do
-  let(:scheme) { OpenStruct.new(id: 1, name: 'uk-area-id') }
+  let(:scheme) { IDMapper::Scheme.new(id: 1, name: 'uk-area-id') }
   let(:record) { IDMapper::Record.new(id: 'gss:S17000017', scheme: scheme) }
-  let(:other_scheme) { OpenStruct.new(id: 2, name: 'wikidata-district-item') }
+  let(:other_scheme) { IDMapper::Scheme.new(id: 2, name: 'wikidata-district-item') }
 
   describe 'initialisation' do
     it 'sets ID attibutes' do
@@ -26,7 +26,7 @@ describe IDMapper::Record do
     end
 
     it 'returns nil value when there is no equivalence claim' do
-      new_scheme = OpenStruct.new(id: 3, name: 'new-scheme')
+      new_scheme = IDMapper::Scheme.new(id: 3, name: 'new-scheme')
       assert_nil record.get(new_scheme)
     end
 
@@ -42,7 +42,7 @@ describe IDMapper::Record do
     after { VCR.eject_cassette }
 
     let(:record) { IDMapper::Record.new(id: 'gss:S14000003', scheme: scheme) }
-    let(:other_record) { OpenStruct.new(id: 'Q408547', scheme: other_scheme) }
+    let(:other_record) { IDMapper::Record.new(id: 'Q408547', scheme: other_scheme) }
 
     it 'returns true when equivalence claim is created' do
       assert_nil record.get(other_scheme)
