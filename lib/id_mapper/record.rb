@@ -3,6 +3,7 @@
 module IDMapper
   class Record
     attr_reader :id, :scheme
+    alias to_s id
 
     def initialize(id:, scheme:)
       @id = id
@@ -28,7 +29,10 @@ module IDMapper
 
     def identifiers
       path = "identifier/#{scheme.id}/#{id}"
-      Request.get(path)[:results].map { |r| Identifier.new(r) }
+      Request.get(path)[:results].map do |r|
+        other_scheme = Scheme.new(id: r[:scheme_id], name: r[:scheme_name])
+        Record.new(id: r[:value], scheme: other_scheme)
+      end
     end
   end
 end
