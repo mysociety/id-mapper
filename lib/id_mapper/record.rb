@@ -10,10 +10,16 @@ module IDMapper
       @scheme = scheme
     end
 
+    def to_h
+      { scheme_id: scheme.id, value: id }
+    end
+
     def get(other_scheme)
-      raise InvalidScheme, 'scheme must differ' if scheme == other_scheme
-      identifier = identifiers.find { |i| i.scheme.id == other_scheme.id }
-      identifier.to_s if identifier
+      all(other_scheme).first
+    end
+
+    def all(other_scheme)
+      identifiers_for_scheme(other_scheme).map(&:to_s)
     end
 
     def set(record, options = {})
@@ -26,6 +32,11 @@ module IDMapper
     end
 
     private
+
+    def identifiers_for_scheme(other_scheme)
+      raise InvalidScheme, 'scheme must differ' if scheme == other_scheme
+      identifiers.select { |i| i.scheme.id == other_scheme.id }
+    end
 
     def identifiers
       path = "identifier/#{scheme.id}/#{id}"

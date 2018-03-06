@@ -37,6 +37,26 @@ describe IDMapper::Record do
     end
   end
 
+  describe '#all' do
+    before { VCR.insert_cassette('id_mapper_record_all') }
+    after { VCR.eject_cassette }
+
+    it 'returns array of identifier values' do
+      assert_equal ['Q1529479'], record.all(other_scheme)
+    end
+
+    it 'returns empty array when there is no equivalence claim' do
+      new_scheme = IDMapper::Scheme.new(id: 3, name: 'new-scheme')
+      assert_equal [], record.all(new_scheme)
+    end
+
+    it 'raises error when scheme is that same' do
+      assert_raises(IDMapper::InvalidScheme) do
+        record.all(scheme)
+      end
+    end
+  end
+
   describe '#set' do
     before { VCR.insert_cassette('id_mapper_record_set') }
     after { VCR.eject_cassette }

@@ -32,7 +32,12 @@ IDMapper.scheme('new-scheme') # raises InvalidScheme exception
 
 ## Identifiers
 
-Fetch identifiers from another scheme:
+Fetch all identifiers from another scheme:
+
+```ruby
+uk['gss:S17000017'].all(wd) => ['Q1529479']
+```
+Fetch the latest identifier from another scheme:
 
 ```ruby
 uk['gss:S17000017'].get(wd) => 'Q1529479'
@@ -41,6 +46,7 @@ uk['gss:S17000017'].get(wd) => 'Q1529479'
 But you can't return identifiers from the same scheme:
 
 ```ruby
+uk['gss:S17000017'].all(uk) => # raises InvalidScheme exception
 uk['gss:S17000017'].get(uk) => # raises InvalidScheme exception
 ```
 
