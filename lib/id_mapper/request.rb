@@ -13,6 +13,8 @@ module IDMapper
     def self.get(path)
       url = "#{ID_MAPPING_STORE_BASE_URL}/#{path}"
       parse(RestClient.get(url, headers))
+    rescue RestClient::NotFound
+      { results: [] }
     end
 
     def self.post(path, params)
