@@ -43,7 +43,10 @@ module IDMapper
         'equivalence-claim',
         options.merge(identifier_a: to_h, identifier_b: record.to_h).compact
       )
-      response.code == 201
+
+      (response.code == 201).tap do |success|
+        update_identifiers(record, options) if success
+      end
     end
 
     def identifiers_for_scheme(other_scheme)
@@ -52,10 +55,22 @@ module IDMapper
     end
 
     def identifiers
+      @identifiers ||= load_identifiers
+    end
+
+    def load_identifiers
       path = "identifier/#{scheme.id}/#{id}"
       Request.get(path)[:results].map do |r|
         other_scheme = Scheme.new(id: r[:scheme_id], name: r[:scheme_name])
         Record.new(id: r[:value], scheme: other_scheme)
+      end
+    end
+
+    def update_identifiers(record, options)
+      if options[:deprecated]
+        @identifiers -= [record]
+      else
+        @identifiers << record
       end
     end
   end
