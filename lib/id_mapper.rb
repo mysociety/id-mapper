@@ -21,7 +21,7 @@ module IDMapper
     end
 
     def log(level, message)
-      logger.send(level, name) { message } if logger
+      logger&.send(level, name) { message }
     end
   end
 end
