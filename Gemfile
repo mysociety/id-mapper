@@ -6,7 +6,7 @@ gemspec
 
 group :development do
   gem 'rake'
-  gem 'rubocop', '0.52.1'
+  gem 'rubocop', '0.53.0'
 
   gem 'minitest'
   gem 'mocha', require: false
