@@ -41,7 +41,8 @@ module IDMapper
     def equivalence_claim(record, options)
       response = Request.post(
         'equivalence-claim',
-        options.merge(identifier_a: to_h, identifier_b: record.to_h).compact
+        options.merge(identifier_a: to_h, identifier_b: record.to_h)
+               .reject { |_, value| value.nil? }
       )
 
       (response.code == 201).tap do |success|
