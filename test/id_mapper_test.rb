@@ -21,9 +21,10 @@ describe IDMapper do
 
   describe '.scheme' do
     it 'raises error when scheme is invalid' do
-      assert_raises(IDMapper::InvalidScheme) do
+      err = assert_raises(IDMapper::InvalidScheme) do
         IDMapper.scheme(scheme: 'invalid')
       end
+      assert_equal 'scheme not present', err.message
     end
 
     it 'returns scheme with given name' do
