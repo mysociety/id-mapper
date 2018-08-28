@@ -16,7 +16,7 @@ module IDMapper
 
     def scheme(scheme_name)
       scheme = schemes.find { |s| s.name == scheme_name }
-      raise InvalidScheme, 'scheme no present' unless scheme
+      raise InvalidScheme, 'scheme not present' unless scheme
       scheme
     end
 
